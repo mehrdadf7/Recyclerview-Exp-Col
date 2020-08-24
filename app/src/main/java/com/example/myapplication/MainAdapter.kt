@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class MainAdapter(
-    private val itemClickListener: (MainModel) -> Unit
+    private val subItemClickListener: (SubModel) -> Unit
 ): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private val items: MutableList<MainModel> = mutableListOf()
@@ -31,7 +31,9 @@ class MainAdapter(
                 itemView.rv_sub_items.visibility = View.GONE
             }
 
-            val subItemAdapter = SubItemAdapter(mainModel.subModels)
+            val subItemAdapter = SubItemAdapter(mainModel.subModels) { subModel ->
+                subItemClickListener(subModel)
+            }
             itemView.rv_sub_items.apply {
                 isNestedScrollingEnabled = false
                 setHasFixedSize(true)
@@ -39,7 +41,6 @@ class MainAdapter(
             }
 
             itemView.setOnClickListener {
-                itemClickListener(mainModel)
                 mainModel.isExpanded = !mainModel.isExpanded
                 notifyItemChanged(adapterPosition)
             }

@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_sub.view.*
 
 class SubItemAdapter(
-    private val subItems: MutableList<SubModel>
+    private val subItems: MutableList<SubModel>,
+    private val subItemClickListener: (SubModel) -> Unit
 ): RecyclerView.Adapter<SubItemAdapter.SubItemViewHolder>() {
 
     inner class SubItemViewHolder(
@@ -15,6 +16,10 @@ class SubItemAdapter(
     ) : RecyclerView.ViewHolder(itemView) {
         fun bind(subModel: SubModel) {
             itemView.tv_sub_title.text = subModel.subTitle
+
+            itemView.setOnClickListener {
+                subItemClickListener(subModel)
+            }
         }
     }
 

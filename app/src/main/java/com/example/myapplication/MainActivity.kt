@@ -8,11 +8,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val mainAdapter by lazy {
-        return@lazy MainAdapter { mainModel ->
-            Toast.makeText(applicationContext, """
-                ${mainModel.title} clicked
-                ${mainModel.subModels}
-            """.trimIndent(), Toast.LENGTH_SHORT)
+        return@lazy MainAdapter { subModel ->
+            Toast.makeText(applicationContext, "${subModel.subTitle} clicked", Toast.LENGTH_SHORT)
                 .show()
         }
     }

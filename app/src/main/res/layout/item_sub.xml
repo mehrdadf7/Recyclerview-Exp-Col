@@ -2,13 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tv_sub_title"
         android:textColor="@color/colorPrimary"
         tools:text="@tools:sample/lorem"
-        android:padding="4dp"
+        android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
